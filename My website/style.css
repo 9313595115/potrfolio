@@ -165,7 +165,7 @@ section .title::after{
 /* home section styling */
 .home{
     display: flex;
-    background: url("https://img.freepik.com/free-photo/dark-blue-product-background_53876-92801.jpg?w=1800&t=st=1682017781~exp=1682018381~hmac=2ccf998321b7744517544bb4d1dfe5b5bbe0d81d76fac2df3c856f8971449327") no-repeat center;
+    background: url("https://www.agdelta.com/wp-content/uploads/2018/06/website-parallax-background-C.jpg") no-repeat center;
     height: 100vh;
     color: #fff;
     min-height: 500px;
