@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volleyball Scoreboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        .score {
+            font-size: 48px;
+            margin: 20px;
+        }
+        button {
+            font-size: 24px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .reset {
+            background-color: #ff6347; /* Tomato */
+            color: white;
+            border: none;
+        }
+        .increment {
+            background-color: #4caf50; /* Green */
+            color: white;
+            border: none;
+        }
+        .decrement {
+            background-color: #f44336; /* Red */
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div><h1>team A start Service</h1></div>
+    <h1>Volleyball Scoreboard</h1>
+    <div class="score">
+        <span id="teamAScore">0</span> - <span id="teamBScore">0</span>
+    </div>
+    <div>
+        <button id="teamAIncrement" class="increment" onclick="incrementScore('teamA')">Team A +1</button>
+        <button id="teamADecrement" class="decrement" onclick="decrementScore('teamA')">Team A -1</button>
+    </div>
+    <div>
+        <button id="teamBIncrement" class="increment" onclick="incrementScore('teamB')">Team B +1</button>
+        <button id="teamBDecrement" class="decrement" onclick="decrementScore('teamB')">Team B -1</button>
+    </div>
+    <div>
+        <button id="serviceChange" onclick="toggleService()">Service Change</button>
+    </div>
+    <div>
+        <button class="reset" onclick="resetScore()">Reset</button>
+    </div>
+    <div>
+        <h1>for any help visit me</h1>
+
+        <a href="https://yash-portal-new.anvil.app/">Yash Portal</a>
+    </div>
+    <script>
+        let teamAScore = 0;
+        let teamBScore = 0;
+        let isTeamAServing = true;
+
+        function updateScoreboard() {
+            document.getElementById('teamAScore').innerText = teamAScore;
+            document.getElementById('teamBScore').innerText = teamBScore;
+        }
+
+        function toggleButtons() {
+            document.getElementById('teamAIncrement').disabled = !isTeamAServing;
+            document.getElementById('teamADecrement').disabled = !isTeamAServing;
+            document.getElementById('teamBIncrement').disabled = isTeamAServing;
+            document.getElementById('teamBDecrement').disabled = isTeamAServing;
+        }
+
+        function incrementScore(team) {
+            if ((team === 'teamA' && isTeamAServing) || (team === 'teamB' && !isTeamAServing)) {
+                if(teamAScore == 14)
+                {
+                    
+                    let a = "Team A is Winner"
+                    let b = a.fontsize(15);
+                    document.write(b); 
+                    teamAScore = 0;
+                    teamBScore = 0;
+                    updateScoreboard();
+                }
+                if(teamBScore == 14)
+                {
+                    
+                    let a = "Team B is Winner"
+                    let b = a.fontsize(15);
+                    document.write(b);
+                    teamAScore = 0;
+                    teamBScore = 0;
+                    updateScoreboard();
+                }
+                if (team === 'teamA') {
+                    teamAScore++;
+                } else {
+                    teamBScore++;
+                }
+                updateScoreboard();
+            }
+        }
+
+        function decrementScore(team) {
+            if ((team === 'teamA' && isTeamAServing) || (team === 'teamB' && !isTeamAServing)) {
+                if (team === 'teamA' && teamAScore > 0) {
+                    teamAScore--;
+                } else if (team === 'teamB' && teamBScore > 0) {
+                    teamBScore--;
+                }
+                updateScoreboard();
+            }
+        }
+
+        function resetScore() {
+            teamAScore = 0;
+            teamBScore = 0;
+            updateScoreboard();
+        }
+
+        function toggleService() {
+            isTeamAServing = !isTeamAServing;
+            toggleButtons();
+        }
+
+        // Initial toggle of buttons based on initial service
+        toggleButtons();
+    </script>
+</body>
+</html>
